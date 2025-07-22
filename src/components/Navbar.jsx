@@ -59,12 +59,12 @@ export default function Navbar() {
           className="
             w-full flex items-center justify-between px-8 py-0 h-13
             mx-auto
-            text-white border-b-emerald-100 
+            text-foreground border-b-emerald-100 
           "
         >
           <div className="text-emerald-500 text-2xl font-secondary">AM</div>
 
-          <div className="hidden md:flex space-x-8 text-white font-glora">
+          <div className="hidden md:flex space-x-8 text-foreground font-glora">
             <a href="#hero" className="hover:text-gray-300">
               Home
             </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
               {isDark ? <MoonStar /> : <Sun />}
             </button>
             <button
-              className="text-white md:hidden"
+              className="text-foreground md:hidden"
               onClick={() => setIsOpen(!isOpen)}
             >
               ☰
@@ -99,7 +99,7 @@ export default function Navbar() {
           </div>
 
           {isOpen && (
-            <div className="absolute top-20 right-8 bg-black bg-opacity-80 rounded-md p-4 flex flex-col space-y-4 md:hidden">
+            <div className="absolute top-20 right-8 text-foreground rounded-md p-4 flex flex-col space-y-4 md:hidden">
               <a href="#hero" onClick={() => setIsOpen(false)}>
                 Home
               </a>

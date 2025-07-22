@@ -16,11 +16,11 @@ export default function HeroAbout() {
       <div className="max-w-4xl text-center">
         <TextGenerateEffect
           words={title || "About"}
-          className="text-2xl md:text-2xl font-bold mb-6 text-emerald-400"
+          className="text-2xl md:text-2xl font-bold mb-6 text-emerald-600"
         />
         <TextGenerateEffect
           words={paragraph1 || "No description available."}
-          className="text-2xl md:text-2xl leading-relaxed text-gray-300 font-primary"
+          className="text-2xl md:text-2xl leading-relaxed text-gray-300 dark:text-black font-primary"
         />
       </div>
     </section>

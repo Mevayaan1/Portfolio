@@ -10,10 +10,11 @@ export default function Hero() {
         transition={{ duration: 0.5}}
         className="flex items-center gap-4 mb-8"
       >
-        <h1 className="text-[3rem] md:text-[4rem] font-serif italic font-bold text-[#ff5631] tracking-tight">
+        <h1 className="text-[3rem] md:text-[4rem] font-serif italic font-bold text-primary tracking-tight">
           Ayaan Mev
         </h1>
-        <span className="inline-block w-5 h-5 rounded-full bg-[#ff5631]" />
+        {/* <h1 className="text-[12rem] md:text-[4rem]">.</h1> */}
+        <span className="inline-block w-5 h-5 rounded-full bg-primary" />
       </motion.div>
       {/* Main content row */}
       <div className="flex flex-row items-center justify-center gap-6 w-full max-w-3xl">
@@ -29,14 +30,14 @@ export default function Hero() {
           animate={{ y:0 , opacity: 1 }}
           initial={{ y:20, opacity: 0 }}
           transition={{ duration: 0.2 }}
-           className="text-4xl md:text-6xl font-bold text-gray-100 tracking-tight leading-none">
+           className="text-4xl md:text-6xl font-bold text-foreground tracking-tight leading-none">
             LET'S CODE
           </motion.span>
           <motion.span
           animate={{ y:0 , opacity: 1 }}
           initial={{ y:20, opacity: 0 }}
           transition={{ duration: 0.2, delay: 0.5 }}
-           className="text-4xl md:text-6xl italic font-serif text-gray-100 leading-none">
+           className="text-4xl md:text-6xl italic font-serif text-foreground leading-none">
             & SHIP
           </motion.span>
         </div>
@@ -47,7 +48,7 @@ export default function Hero() {
             alt="right visual"
             className="min-w-xl-32 h-24 object-cover rounded-xl shadow-lg mb-2"
           />
-          <span className="text-xs text-gray-300 text-center mt-1">
+          <span className="text-xs text-[--color-primary] text-center mt-1">
             WITH<br />GOOD<br />AESTHETIC<br />VISION
           </span>
         </div>

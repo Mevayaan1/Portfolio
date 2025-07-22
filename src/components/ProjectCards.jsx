@@ -60,7 +60,7 @@ export default function ProjectCards({
         perspective: 1000,
       }}
       className={cn(
-        // Responsive width: full on mobile, max-w-xs on mobile, sm:max-w-sm, md:max-w-md
+        
         "relative max-w-2 sm:max-w-xs md:max-w-sm lg:max-w-md cursor-grab rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-3 sm:p-4 md:p-6 shadow-2xl overflow-hidden min-h-0 max-h-[90vh]",
         fanned && index > 0 && "-ml-[20vw] sm:-ml-[120px] md:-ml-[180px]",
       )}
