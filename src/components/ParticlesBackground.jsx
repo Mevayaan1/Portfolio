@@ -20,6 +20,7 @@ export default function ParticlesBackground() {
     await loadSlim(engine);
   }, []);
 
+  const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   return (
     <Particles
       id="tsparticles"
@@ -31,15 +32,15 @@ export default function ParticlesBackground() {
           color: { value: isDark ? "#000000" : "#ffffff" }
         },
         particles: {
-          number: { value: 50 },
+          number: { value: reduceMotion ? 8 : 24 },
           color: { value: isDark ? "#ffffff" : "#000000" },
           shape: { type: "circle" },
-          opacity: { value: 0.3 },
-          size: { value: { min: 1, max: 3 } },
-          move: { enable: true, speed: 1 }
+          opacity: { value: 0.12 },
+          size: { value: { min: 1, max: 2 } },
+          move: { enable: !reduceMotion, speed: reduceMotion ? 0 : 0.2 }
         },
         interactivity: {
-          events: { onHover: { enable: true, mode: "bubble" } },
+          events: { onHover: { enable: !reduceMotion, mode: "bubble" } },
           resize: true
         },
         detectRetina: true

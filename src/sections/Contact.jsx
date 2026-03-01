@@ -59,12 +59,13 @@ export default function Contact() {
           />
           <button
             type="submit"
-            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded transition-colors"
+            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            aria-label="Send message"
           >
             Send Message
           </button>
           {submitted && (
-            <p className="text-emerald-400 mt-2">Thank you for reaching out!</p>
+            <p className="text-emerald-400 mt-2" role="status" aria-live="polite">Thank you for reaching out!</p>
           )}
         </form>
         <div className="flex justify-center gap-6 mt-8">

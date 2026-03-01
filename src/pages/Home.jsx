@@ -1,6 +1,7 @@
+import { Suspense, lazy } from "react";
 import Draggable from "@/sections/Draggable";
-import ParallaxText from "../components/ParallaxText";
-import FeatureProjects from "../sections/FeatureProjects";
+const ParallaxText = lazy(() => import("../components/ParallaxText"));
+const FeatureProjects = lazy(() => import("../sections/FeatureProjects"));
 import Hero from "../sections/Hero";
 import HeroAbout from "../sections/HeroAbout";
 import Contact from "../sections/Contact";
@@ -12,23 +13,12 @@ export default function Home() {
     <div className=" relative flex w-full flex-col justify-content-center bg-transparent ">
       <section className=" ">
         <Hero />
-        <ParallaxText
-          baseVelocity={-5}
-          className=" top-[40%] text-[clamp(1.5rem,4vw+1rem,4rem)] text-2xl md:text-3xl lg:text-5xl"
-        >
-          {" "}
-          Creative Developer • React • Tailwind • Motion
-        </ParallaxText>
-        <ParallaxText
-          baseVelocity={5}
-          className="top-[50%] text-[clamp(1.5rem,4vw+1rem,4rem)] text-2xl md:text-3xl lg:text-5xl"
-        >
-          {" "}
-          Creative Developer • React • Tailwind • Motion
-        </ParallaxText>
+
         <HeroAbout />
         
-        <FeatureProjects arrange="fanned" />
+        <Suspense fallback={null}>
+          <FeatureProjects arrange="grid" />
+        </Suspense>
         {/* <Draggable /> */}
         {/* <Skills /> */}
         <Contact />

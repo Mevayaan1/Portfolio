@@ -1,24 +1,18 @@
-import ParticlesBackground from "./components/ParticlesBackground";
+import { Suspense, lazy } from "react";
+const ParticlesBackground = lazy(() => import("./components/ParticlesBackground"));
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-// import Projects from "./sections/Projects";
-// import Contact from "./sections/Contact";
-// import Footer from "./components/Footer";
 export default function App() {
   return (
     <>
-      <ParticlesBackground />
+      <Suspense fallback={null}>
+        <ParticlesBackground />
+      </Suspense>
       <div className="relative z-1 overflow-hidden">
         <Navbar />
         <main className="grow">
-        <Home/>
-        
-
+          <Home/>
         </main>
-
-        {/* <Projects /> */}
-        {/* <Contact /> */}
-        {/* <Footer /> */}
       </div>
     </>
   );

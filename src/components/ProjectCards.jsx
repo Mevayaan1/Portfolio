@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
-import { cn } from "@/lib/utils" // Assuming cn utility is available for conditional class names
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 export default function ProjectCards({
   id,
@@ -13,18 +14,20 @@ export default function ProjectCards({
   date,
   image,
   index,
-  constraintsRef,
-  fanned
+  fanned,
+  githubUrl,
+  demoUrl
 }) {
   // 3D tilt effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { stiffness: 100, damping: 20, mass: 0.5 };
-  const rotateX = useSpring(useTransform(mouseY, [-100, 100], [15, -15]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-100, 100], [-15, 15]), springConfig);
-  const glareOpacity = useSpring(useTransform(mouseX, [-100, 0, 100], [0.2, 0, 0.2]), springConfig);
+  const springConfig = { stiffness: 120, damping: 18, mass: 0.5 };
+  const rotateX = useSpring(useTransform(mouseY, [-80, 80], [6, -6]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-80, 80], [-6, 6]), springConfig);
+  const glareOpacity = useSpring(useTransform(mouseX, [-80, 0, 80], [0.08, 0, 0.08]), springConfig);
 
   const frame = useRef(null);
+  const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const handleMouseMove = (e) => {
     if (frame.current) return;
@@ -46,22 +49,17 @@ export default function ProjectCards({
   return (
     <motion.div
       key={id}
-      drag
-      dragConstraints={constraintsRef}
-      dragElastic={0.2}
-      whileDrag={{ scale: 1.07, rotate: 5, boxShadow: "0 16px 48px 0 rgba(0,0,0,0.45)" }}
-      whileHover={{ scale: 1.04, boxShadow: "0 12px 40px 0 rgba(0,0,0,0.35)" }}
-      initial={{ rotate: (index - 1.5) * 7 }}
+      whileHover={reduceMotion ? undefined : { scale: 1.03, boxShadow: "0 12px 40px 0 rgba(0,0,0,0.35)" }}
+      initial={{ rotate: fanned ? (index - 1.5) * 5 : 0 }}
       style={{
         zIndex: id * 10,
-        rotateX,
-        rotateY,
+        rotateX: reduceMotion ? 0 : rotateX,
+        rotateY: reduceMotion ? 0 : rotateY,
         boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
         perspective: 1000,
       }}
       className={cn(
-        
-        "relative max-w-2 sm:max-w-xs md:max-w-sm lg:max-w-md cursor-grab rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-3 sm:p-4 md:p-6 shadow-2xl overflow-hidden min-h-0 max-h-[90vh]",
+        "relative w-full h-full flex flex-col rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 md:p-6 shadow-2xl overflow-hidden",
         fanned && index > 0 && "-ml-[20vw] sm:-ml-[120px] md:-ml-[180px]",
       )}
       onMouseMove={handleMouseMove}
@@ -98,16 +96,23 @@ export default function ProjectCards({
           </span>
         ))}
       </div>
-      <div className="flex items-center justify-between">
+      <div className="mt-auto flex items-center justify-between">
         <span className="rounded-md bg-hue-6/20 px-2 py-1 text-xs font-medium text-hue-6">
           {status}
         </span>
         <span className="text-xs text-neutral-400">{date}</span>
       </div>
-      {/* Glare overlay */}
+      <div className="flex gap-2">
+        <Button asChild variant="outline" size="sm" aria-label={`View ${title} on GitHub`}>
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </Button>
+        <Button asChild variant="default" size="sm" aria-label={`Open live demo: ${title}`}>
+          <a href={demoUrl} target="_blank" rel="noopener noreferrer">Live Demo</a>
+        </Button>
+      </div>
       <motion.div
         style={{ opacity: glareOpacity }}
-        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent rounded-2xl"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent rounded-2xl"
       />
     </motion.div>
   )
