@@ -62,7 +62,7 @@ export default function Navbar() {
             text-foreground border-b-emerald-100 
           "
         >
-          <div className="text-emerald-500 text-2xl font-secondary">AM</div>
+          <div className="text-[#10bf00] text-2xl font-secondary">AM</div>
 
           <div className="hidden md:flex space-x-8 text-foreground font-glora">
             <a href="#hero" className="hover:text-gray-300">

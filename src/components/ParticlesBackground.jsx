@@ -35,7 +35,7 @@ export default function ParticlesBackground() {
           number: { value: reduceMotion ? 8 : 24 },
           color: { value: isDark ? "#ffffff" : "#000000" },
           shape: { type: "circle" },
-          opacity: { value: 0.12 },
+          opacity: { value: 0.32 },
           size: { value: { min: 1, max: 2 } },
           move: { enable: !reduceMotion, speed: reduceMotion ? 0 : 0.2 }
         },
