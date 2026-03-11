@@ -1,69 +1,141 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-const skills = [
+const categories = [
   {
-    name: "Tailwind CSS",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="40" height="40" fill="currentColor" className="text-sky-400">
-        <path d="M64.004 25.602c-17.067 0-27.73 8.53-32 25.597 6.398-8.531 13.867-11.73 22.398-9.597 4.871 1.214 8.352 4.746 12.207 8.66C72.883 56.629 80.145 64 96.004 64c17.066 0 27.73-8.531 32-25.602-6.399 8.536-13.867 11.735-22.399 9.602-4.87-1.215-8.347-4.746-12.207-8.66-6.27-6.367-13.53-13.738-29.394-13.738zM32.004 64c-17.066 0-27.73 8.531-32 25.602C6.402 81.066 13.87 77.867 22.402 80c4.871 1.215 8.352 4.746 12.207 8.66 6.274 6.367 13.536 13.738 29.395 13.738 17.066 0 27.73-8.53 32-25.597-6.399 8.531-13.867 11.73-22.399 9.597-4.87-1.214-8.347-4.746-12.207-8.66C55.128 71.371 47.868 64 32.004 64zm0 0"/>
-      </svg>
-    ),
+    label: "Frontend",
+    skills: [
+      { name: "React / Next.js", dots: 5 },
+      { name: "TypeScript",      dots: 4 },
+      { name: "Tailwind CSS",    dots: 5 },
+      { name: "Framer Motion",   dots: 3 },
+      { name: "HTML / CSS",      dots: 5 },
+    ],
   },
   {
-    name: "React.js",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="40" height="40" fill="currentColor" className="text-cyan-400">
-        <g>
-          <circle cx="64" cy="64" r="11" fill="#fff"/>
-          <g stroke="#06b6d4" strokeWidth="6" fill="none">
-            <ellipse rx="56" ry="22" cx="64" cy="64" transform="rotate(0 64 64)"/>
-            <ellipse rx="56" ry="22" cx="64" cy="64" transform="rotate(60 64 64)"/>
-            <ellipse rx="56" ry="22" cx="64" cy="64" transform="rotate(120 64 64)"/>
-          </g>
-        </g>
-      </svg>
-    ),
+    label: "Backend",
+    skills: [
+      { name: "Node.js / Express", dots: 5 },
+      { name: "MongoDB",           dots: 4 },
+      { name: "PostgreSQL",        dots: 3 },
+      { name: "REST APIs",         dots: 5 },
+      { name: "GraphQL",           dots: 2 },
+    ],
   },
   {
-    name: "Framer Motion",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" fill="currentColor" className="text-fuchsia-400">
-        <rect x="6" y="6" width="28" height="28" rx="6" fill="#fff"/>
-        <path d="M14 14h12v4H18v4h8v4H14z" fill="#a21caf"/>
-      </svg>
-    ),
+    label: "Tools",
+    tools: [
+      "Git", "GitHub", "Docker", "Vercel",
+      "Vite", "Figma", "Postman", "Linux",
+      "VS Code", "Nginx", "Stripe", "Railway",
+    ],
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+function Dots({ filled }) {
+  return (
+    <div className="flex items-center gap-1">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span
+          key={i}
+          className="w-1.5 h-1.5 rounded-full"
+          style={{
+            background: i < filled
+              ? "#10B981"                  // emerald-500 — filled dot
+              : "rgba(255,255,255,0.1)",   // empty dot
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Skills() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
     <section
       id="skills"
-      className="py-20 bg-transparent flex flex-col items-center justify-center px-4 md:px-8"
+      ref={ref}
+      className="w-full bg-transparent px-6 lg:px-12 py-24 scroll-mt-24"
     >
-      <h2 className="text-3xl font-bold text-emerald-400 mb-10 font-glora">
-        Skills
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-2xl">
-        {skills.map((skill, i) => (
-          <motion.div
-            key={skill.name}
-            whileHover={{ scale: 1.04, boxShadow: "0 12px 40px 0 rgba(0,0,0,0.35)" }}
-            className="relative flex  gap-4 items-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-2 shadow-2xl overflow-hidden transition-transform duration-200"
-            
+      <div className="w-full max-w-7xl">
+        <div className="border-t border-white/10 mb-12" />
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="flex flex-col gap-10"
+        >
+          {/* Label */}
+          <motion.p
+            variants={cardVariants}
+            className="uppercase tracking-wide text-xs text-neutral-500/70 font-primary"
           >
-            <div className="mb-1">{skill.icon}</div>
-            <span className="text-base text-white font-semibold font-glora">
-              {skill.name}
-            </span>
-            {/* Glare overlay */}
-            <motion.div
-              style={{ opacity: 0.12 }}
-              className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent rounded-2xl"
-            />
-          </motion.div>
-        ))}
+            Skills & Stack
+          </motion.p>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {categories.map((cat) => (
+              <motion.div
+                key={cat.label}
+                variants={cardVariants}
+                className="flex flex-col gap-6 p-6 rounded-xl border border-white/10 hover:border-white/20 transition-colors duration-300"
+              >
+                {/* Card label */}
+                <p className="font-primary text-xs text-neutral-500/70 uppercase tracking-widest">
+                  {cat.label}
+                </p>
+
+                {/* Skill rows */}
+                {cat.skills && (
+                  <div className="flex flex-col gap-4">
+                    {cat.skills.map((skill, i) => (
+                      <div key={skill.name}>
+                        <div className="flex items-center justify-between">
+                          <span className="font-primary text-sm text-neutral-300">
+                            {skill.name}
+                          </span>
+                          <Dots filled={skill.dots} />
+                        </div>
+                        {i < cat.skills.length - 1 && (
+                          <div className="mt-4 h-px w-full bg-white/5" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Tool pills */}
+                {cat.tools && (
+                  <div className="flex flex-wrap gap-2">
+                    {cat.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="font-primary text-xs text-neutral-400 border border-white/10 rounded-full px-3 py-1 hover:border-white/25 hover:text-neutral-200 transition-colors duration-200 cursor-default"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

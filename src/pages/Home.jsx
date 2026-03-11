@@ -14,8 +14,8 @@ export default function Home() {
       <section className=" ">
         <Hero />
 
-        <HeroAbout />
-        
+        {/* <HeroAbout /> */}
+        <Skills />
         <Suspense fallback={null}>
           <FeatureProjects arrange="grid" />
         </Suspense>
