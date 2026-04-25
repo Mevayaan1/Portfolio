@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { MoonStar, Sun } from "lucide-react";
+import NavLogo from "./ui/Navlogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,23 +27,22 @@ export default function Navbar() {
       maxWidth: scrolled ? "60%" : "100%",
       borderRadius: scrolled ? "9999px" : "0px", // Tailwind's full rounded is 9999px
       backgroundColor: scrolled
-        ?  "rgba(255,255,255,0.05)"
+        ? "rgba(255,255,255,0.05)"
         : "rgba(9, 9, 10, 0.1)",
       backdropFilter: scrolled ? "blur(16px)" : "blur(0px)",
-      marginTop:scrolled ? "2%" : " 1%",
+      marginTop: scrolled ? "2%" : " 1%",
       boxShadow: scrolled ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
       transition: { duration: 0.4, ease: "easeInOut" },
-      
     });
   }, [scrolled, controls]);
 
   // Toggle dark/light mode
   const handleThemeToggle = () => {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark");
       setIsDark(false);
     } else {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
       setIsDark(true);
     }
   };
@@ -62,8 +62,8 @@ export default function Navbar() {
             text-foreground border-b-emerald-100 
           "
         >
-          <div className="text-[#10bf00] text-2xl font-secondary">AM</div>
 
+          <NavLogo />
           <div className="hidden md:flex space-x-8 text-foreground font-glora">
             <a href="#hero" className="hover:text-gray-300">
               Home
@@ -86,7 +86,6 @@ export default function Navbar() {
               className="text-xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
               aria-label="Toggle dark mode"
             >
-
               {isDark ? <MoonStar /> : <Sun />}
             </button>
             <button
@@ -95,7 +94,6 @@ export default function Navbar() {
             >
               ☰
             </button>
-            
           </div>
 
           {isOpen && (
