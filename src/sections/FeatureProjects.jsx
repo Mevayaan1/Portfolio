@@ -55,7 +55,7 @@ const cardContainer =
     <section
       id="projects"
       ref={ref}
-      className="w-full bg-transparent py-24 scroll-mt-24"
+      className="w-full bg-transparent scroll-mt-24"
     >
       <div className="w-full">
         <div className="border-t border-zinc-200 dark:border-zinc-800 mb-12" />

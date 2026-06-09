@@ -46,7 +46,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full bg-transparent py-24 scroll-mt-24"
+      className="w-full bg-transparent scroll-mt-24"
     >
       <div className="w-full">
         {/* Top divider */}

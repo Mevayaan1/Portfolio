@@ -33,10 +33,15 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
     // { href: "https://youtube.com/@behindthepowers", icon: "▶", label: "YouTube", bg: "bg-[#ff0000]" },
   ];
 
+  const AVATAR_SIZE = "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28";
+
+  const AVATAR_OVERHANG = "pb-10 md:pb-12 lg:pb-14";
+
   return (
     <section className="relative z-10 bg-transparent">
+      
+    <div className={`relative ${AVATAR_OVERHANG}`}>
       {/* Banner */}
-    <div>
       <div className="relative h-36 md:h-44 overflow-hidden">
         {bannerSrc ? (
           <img
@@ -58,8 +63,8 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
       </div>
 
       {/* Avatar */}
-      <div className="absolute bottom-[50%] right-8">
-        <div className="w-22 md:w-34 lg:w-46 aspect-square rounded-full  ring-3 ring-white-950 overflow-hidden">
+      <div className="absolute bottom-0 right-6 md:right-8">
+        <div className={`aspect-square rounded-full ring-2 ring-white-950 overflow-hidden ${AVATAR_SIZE}`}>
           {avatarSrc ? (
             <img src={avatarSrc} alt="Avatar" className="w-full h-full object-cover" />
           ) : (
