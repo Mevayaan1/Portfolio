@@ -15,9 +15,9 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col justify-center min-h-[85vh] w-full bg-transparent px-6 lg:px-12 pt-24 scroll-mt-24"
+      className="flex flex-col justify-center min-h-[85vh] w-full bg-transparent pt-24 scroll-mt-24"
     >
-      <div className="w-full max-w-7xl">
+      <div className="w-full">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -26,7 +26,7 @@ export default function Hero() {
         >
           {/* Availability badge */}
           <motion.div variants={itemVariants} className="w-fit">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 font-primary text-xs text-emerald-400">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -38,7 +38,7 @@ export default function Hero() {
           {/* Role label */}
           <motion.p
             variants={itemVariants}
-            className="uppercase tracking-wide text-xs md:text-sm text-neutral-500/70 font-primary"
+            className="uppercase tracking-widest text-sm font-medium text-zinc-500"
           >
             Full-Stack Engineer
           </motion.p>
@@ -46,7 +46,7 @@ export default function Hero() {
           {/* Headline */}
           <motion.h1
             variants={itemVariants}
-            className="font-primary text-[clamp(2rem,3vw+1rem,2.8rem)] font-bold text-foreground leading-tight"
+            className="text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight"
           >
             Build production-ready web applications that scale.
           </motion.h1>
@@ -54,7 +54,7 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="font-primary text-sm md:text-base text-neutral-400 leading-relaxed"
+            className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
           >
             I engineer scalable web systems using React, Node, and MongoDB — built
             with performance-first architecture and production-ready deployment in mind.
@@ -63,7 +63,7 @@ export default function Hero() {
           {/* Stack */}
           <motion.p
             variants={itemVariants}
-            className="font-primary text-sm text-neutral-500/70"
+            className="text-sm text-zinc-600 dark:text-zinc-400"
           >
             React • Node • MongoDB • Tailwind • REST APIs
           </motion.p>

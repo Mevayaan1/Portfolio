@@ -6,6 +6,8 @@ import { PickedProjects } from "@/data/pickedprojects";
 
 function FeatureProjects({ arrange = "grid" }) {
   const [projects, setProjects] = useState(PickedProjects);
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -16,29 +18,47 @@ function FeatureProjects({ arrange = "grid" }) {
     setProjects((proj) => [...proj].reverse());
   }
 
-  const cardContainer =
-    arrange === "grid" ? (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {projects.map((proj, i) => (
-          <ProjectCards key={proj.id} {...proj} index={i} fanned={false} />
-        ))}
-      </div>
-    ) : (
-      <div className="flex justify-center items-center">
-        {projects.map((proj, i) => (
-          <ProjectCards key={proj.id} {...proj} index={i} fanned={true} />
-        ))}
-      </div>
-    );
-
+const cardContainer =
+  arrange === "grid" ? (
+    <div className="flex flex-col gap-5">
+      {visibleProjects.map((proj, i) => (
+        <motion.div
+          key={proj.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: i * 0.08,
+          }}
+        >
+          <ProjectCards
+            {...proj}
+            index={i}
+            fanned={false}
+          />
+        </motion.div>
+      ))}
+    </div>
+  ) : (
+    <div className="flex flex-col gap-5">
+      {visibleProjects.map((proj, i) => (
+        <ProjectCards
+          key={proj.id}
+          {...proj}
+          index={i}
+          fanned={false}
+        />
+      ))}
+    </div>
+  );
   return (
     <section
       id="projects"
       ref={ref}
-      className="w-full bg-transparent px-6 lg:px-12 py-24 scroll-mt-24"
+      className="w-full bg-transparent py-24 scroll-mt-24"
     >
-      <div className="w-full max-w-7xl mx-auto">
-        <div className="border-t border-white/10 mb-12" />
+      <div className="w-full">
+        <div className="border-t border-zinc-200 dark:border-zinc-800 mb-12" />
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -48,10 +68,10 @@ function FeatureProjects({ arrange = "grid" }) {
         >
           {/* Left: label + heading */}
           <div className="flex flex-col gap-3">
-            <p className="uppercase tracking-wide text-xs text-neutral-500/70 font-primary">
+            <p className="uppercase tracking-widest text-sm font-medium text-zinc-500">
               Selected Work
             </p>
-            <h2 className="font-primary text-[clamp(1.6rem,2.5vw+0.8rem,2.2rem)] font-bold text-foreground leading-tight">
+            <h2 className="text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight">
               Featured Projects.
             </h2>
           </div>
@@ -82,6 +102,17 @@ function FeatureProjects({ arrange = "grid" }) {
           {cardContainer}
         </motion.div>
 
+        {projects.length > 3 && (
+          <button
+            type="button"
+            onClick={() => setShowAll((prev) => !prev)}
+            className="mt-4 inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+          >
+            {showAll ? "Show less" : "Show more"}
+            <span aria-hidden="true">{showAll ? "−" : "+"}</span>
+          </button>
+        )}
+
         {/* GitHub archive link */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -93,7 +124,7 @@ function FeatureProjects({ arrange = "grid" }) {
             href="https://github.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-primary text-sm text-neutral-500 border border-white/10 rounded-lg px-6 py-3 hover:border-white/25 hover:text-neutral-300 transition-all duration-200 flex items-center gap-2 group"
+            className="text-sm text-zinc-500 border border-zinc-200 rounded-lg px-6 py-3 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:text-zinc-100 transition-all duration-200 flex items-center gap-2"
           >
             View all on GitHub
             <svg

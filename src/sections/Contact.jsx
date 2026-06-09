@@ -46,11 +46,11 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full bg-transparent px-6 lg:px-12 py-24 scroll-mt-24"
+      className="w-full bg-transparent py-24 scroll-mt-24"
     >
-      <div className="w-full max-w-7xl">
+      <div className="w-full">
         {/* Top divider */}
-        <div className="border-t border-white/10 mb-12" />
+        <div className="border-t border-zinc-200 dark:border-zinc-800 mb-12" />
 
         <motion.div
           variants={containerVariants}
@@ -63,19 +63,19 @@ export default function Contact() {
           <div className="col-span-12 md:col-span-7 flex flex-col gap-6">
             <motion.p
               variants={itemVariants}
-              className="uppercase tracking-wide text-xs md:text-sm text-neutral-500/70 font-primary"
+              className="uppercase tracking-widest text-sm font-medium text-zinc-500"
             >
               Get In Touch
             </motion.p>
             <motion.h2
               variants={itemVariants}
-              className="font-primary text-[clamp(1.5rem,2vw+1rem,2rem)] font-bold text-foreground leading-tight"
+              className="text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight"
             >
               Let's build something together.
             </motion.h2>
             <motion.p
               variants={itemVariants}
-              className="text-neutral-400 max-w-md font-primary text-sm md:text-base"
+              className="max-w-md text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
             >
               Open to collaborations, freelance work, or just a friendly hello. Find me across these platforms.
             </motion.p>
