@@ -24,7 +24,7 @@ const groups = [
       { name: "PostgreSQL", color: "#4169E1" },
       { name: "Supabase", color: "#3FCF8E" },
       { name: "REST APIs", color: "#FF6C37" },
-      { name: "GraphQL", color: "#E10098" },
+      { name: "Prisma", color: "#cfb9d8ff" },
     ],
   },
   {

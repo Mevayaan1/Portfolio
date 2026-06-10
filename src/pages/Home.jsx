@@ -13,7 +13,7 @@ const bannerSrc = "https://i.pinimg.com/736x/83/dd/29/83dd2961a32eec253eb6af3734
 
 export default function Home() {
   return (
-    <div className="relative w-full bg-transparent px-6 lg:px-12">
+    <div className="relative w-full bg-transparent lg:px-12">
       <HeroSection avatarSrc={avatarSrc} bannerSrc={bannerSrc} />
       <div className="space-y-16 max-w-7xl mx-auto">
         <AboutSection />

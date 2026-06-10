@@ -1,7 +1,17 @@
+import {
+  ViraatIcon,
+  UniFormIcon,
+  HeerIcon,
+  EngravedIcon,
+  MevenviroIcon,
+  TorrentIcon,
+} from "@/components/ui/projectIcons";
+import { HardHat, ReceiptText } from "lucide-react";
+
 export const PickedProjects = [
   {
     id: 1,
-    icon: "🏗️",
+    icon: <HardHat className="w-5 h-5 text-foreground" />,
     image: "https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg",
     title: "Viraat Builders Management System",
     subtitle: "Next.js • TypeScript • Express • MongoDB",
@@ -16,7 +26,7 @@ export const PickedProjects = [
 
   {
     id: 2,
-    icon: "🧾",
+    icon: <ReceiptText className="w-5 h-5 text-foreground" />,
     image: "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg",
     title: "UniForm Billing System",
     subtitle: "React • TypeScript • Express • MySQL",
@@ -28,10 +38,9 @@ export const PickedProjects = [
     githubUrl: "",
     demoUrl: "",
   },
-
   {
     id: 3,
-    icon: "🛒",
+    icon: <HeerIcon />,
     image: "https://images.pexels.com/photos/5632397/pexels-photo-5632397.jpeg",
     title: "Heer E-commerce Platform",
     subtitle: "React • Supabase • Razorpay",
@@ -43,10 +52,9 @@ export const PickedProjects = [
     githubUrl: "",
     demoUrl: "https://www.heerfragrance.com/",
   },
-
   {
     id: 4,
-    icon: "💎",
+    icon: <EngravedIcon />,
     image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
     title: "Engraved by AM Arts",
     subtitle: "React • Node.js • MongoDB",
@@ -58,10 +66,9 @@ export const PickedProjects = [
     githubUrl: "https://github.com/Mevayaan1",
     demoUrl: "",
   },
-
   {
     id: 5,
-    icon: "🏭",
+    icon: <MevenviroIcon />,
     image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg",
     title: "Mevenviro Industrial Platform",
     subtitle: "React • Node.js • Analytics",
@@ -76,7 +83,7 @@ export const PickedProjects = [
 
   {
     id: 6,
-    icon: "⚡",
+    icon: <TorrentIcon />,
     image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg",
     title: "Torrent Streaming Backend",
     subtitle: "Node.js • WebTorrent • Distributed Systems",

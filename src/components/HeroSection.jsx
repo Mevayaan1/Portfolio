@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { MapPin, Mail, Youtube, Users, Clock , Mars, CodeXml, CodeXmlIcon } from "lucide-react";
+import { MapPin, Mail, Youtube, Users, Clock, Mars, CodeXml, CodeXmlIcon, GithubIcon, LinkedinIcon } from "lucide-react";
+import MorphingText from "@/components/MorphingText";
 const avatarSrc = "https://assets.pinterest.com/ext/embed.html?id=1011339660096812785g";
 const bannerSrc = "https://assets.pinterest.com/ext/embed.html?id=1011339660096812785g";
 
@@ -18,63 +19,63 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
   }, []);
 
   const contacts = [
-    { icon: <CodeXml className="w-4 h-4"/>, label: "Freelance Full-Stack Dev" },
-    { icon: <Clock className="w-4 h-4" /> , label: currentTime },
-    { icon: <MapPin className="w-4 h-4" />, label: "Jodhpur, Rajasthan, IN" },
-    { icon: <Mail className="w-4 h-4" />, label: "ayaanmev@gmail.com" },
+    { icon: <CodeXml className="w-4 h-4 text-foreground" />, label: "Freelance Full-Stack Dev" },
+    { icon: <Clock className="w-4 h-4 text-foreground" />, label: currentTime },
+    { icon: <MapPin className="w-4 h-4 text-foreground" />, label: "Jodhpur, Rajasthan, IN" },
+    { icon: <Mail className="w-4 h-4 text-foreground" />, label: "ayaanmev@gmail.com" },
     // { icon: <Youtube className="w-4 h-4" />, label: "Behind The Powers" },
-    { icon: <Mars className="w-4 h-4" />, label: "he/him" },
+    { icon: <Mars className="w-4 h-4 text-foreground" />, label: "he/him" },
   ];
 
   const socials = [
-    { href: "https://twitter.com/@mevayaan01", icon: "𝕏", label: "X", bg: "bg-black border-zinc-700" },
-    { href: "https://github.com/mevayaan1", icon: "⌥", label: "GitHub", bg: "bg-[#161b22] border-[#30363d]" },
-    { href: "https://linkedin.com/in/mevayaan01", icon: "in", label: "LinkedIn", bg: "bg-[#0a66c2]" },
-    // { href: "https://youtube.com/@behindthepowers", icon: "▶", label: "YouTube", bg: "bg-[#ff0000]" },
+    { href: "https://twitter.com/@mevayaan01", icon: "X", label: "X", bg: "bg-black border-zinc-700" },
+    { href: "https://github.com/mevayaan1", icon: <GithubIcon className="w-4 h-4" />, label: "GitHub", bg: "bg-[#161b22] border-[#30363d]" },
+    { href: "https://linkedin.com/in/mevayaan01", icon: <LinkedinIcon className="w-4 h-4" />, label: "LinkedIn", bg: "bg-[#0a66c2]" },
+    // { href: "https://youtube.com/@behindthepowers", icon: <YoutubeIcon className="w-4 h-4" />, label: "YouTube", bg: "bg-[#ff0000]" },
   ];
 
-  const AVATAR_SIZE = "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28";
+  const AVATAR_SIZE = "w-20 h-20 md:w-24 md:h-24 lg:w-38 lg:h-38";
 
   const AVATAR_OVERHANG = "pb-10 md:pb-12 lg:pb-14";
 
   return (
     <section className="relative z-10 bg-transparent">
-      
-    <div className={`relative ${AVATAR_OVERHANG}`}>
-      {/* Banner */}
-      <div className="relative h-36 md:h-44 overflow-hidden">
-        {bannerSrc ? (
-          <img
-            src={bannerSrc}
-            alt="Banner"
-            className="w-full h-full object-cover opacity-50 [image-rendering:pixelated]"
-          />
-        ) : (
-          <div className="w-full h-full bg-zinc-900 relative">
-            <div
-              className="absolute inset-0 opacity-3"
-              style={{
-                backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px), repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)",
-              }}
-            />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950" />
-      </div>
 
-      {/* Avatar */}
-      <div className="absolute bottom-0 right-6 md:right-8">
-        <div className={`aspect-square rounded-full ring-2 ring-white-950 overflow-hidden ${AVATAR_SIZE}`}>
-          {avatarSrc ? (
-            <img src={avatarSrc} alt="Avatar" className="w-full h-full object-cover" />
+      <div className={`relative ${AVATAR_OVERHANG}`}>
+        {/* Banner */}
+        <div className="h-36 md:h-44 overflow-hidden w-full">
+          {bannerSrc ? (
+            <img
+              src={bannerSrc}
+              alt="Banner"
+              className="w-full h-full object-cover opacity-50 [image-rendering:pixelated]"
+            />
           ) : (
-            <div className="w-full h-full bg-zinc-800 flex items-center justify-center text-zinc-400 text-2xl font-bold">
-              ...
+            <div className="w-full h-full bg-zinc-900 relative">
+              <div
+                className="absolute inset-0 "
+                style={{
+                  backgroundImage: "repeatinglinear-gradient(0deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px), repeatinglinear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)",
+                }}
+              />
             </div>
           )}
+          <div className="absolute inset-x-0 top-0 h-36 md:h-44 bg-gradient-to-b from-transparent to-zinc-950" />
+        </div>
+
+        {/* Avatar */}
+        <div className="absolute bottom-0 right-6 md:right-8">
+          <div className={`aspect-square rounded-full ring-2 ring-white-950 overflow-hidden ${AVATAR_SIZE}`}>
+            {avatarSrc ? (
+              <img src={avatarSrc} alt="Avatar" className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full bg-zinc-800 flex items-center justify-center text-zinc-400 text-2xl font-bold">
+                ...
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
       {/* Identity */}
       <div className="pt-3 pb-0 px-7">
         <div className="flex items-center gap-2 mb-1">
@@ -85,9 +86,16 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
             ✓
           </span>
         </div>
-        <p className="text-sm text-zinc-500 font-mono tracking-wide mb-5">
-          Full-Stack Developer · Building things for the web
-        </p>
+        <MorphingText className="text-sm text-zinc-500 font-mono tracking-wide mb-5"
+          words={[
+            "Full-Stack Engineer",
+            "React Developer",
+            "Node.js Backend Dev",
+            "Freelance Builder",
+            "Open to Work",
+          ]}
+        />
+
       </div>
 
       {/* Contacts */}
@@ -96,14 +104,13 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
           {contacts.map((contact, index) => (
             <div
               key={index}
-              className={`flex items-center gap-2.5 py-2.5 text-sm text-zinc-400 font-mono border-b border-zinc-800/60 ${
-                index % 2 === 0 ? "border-r border-zinc-800/60 pr-5" : "pl-5"
-              }`}
+              className={`flex items-center gap-2.5 py-2.5 text-sm text-zinc-400 font-mono border-b border-zinc-800/60 ${index % 2 === 0 ? "border-r border-zinc-800/60 pr-5" : "pl-5"
+                }`}
             >
               <span className="w-7 h-7 rounded-lg bg-zinc-800/80 border border-zinc-700/50 flex items-center justify-center text-xs text-zinc-400 flex-shrink-0">
                 {contact.icon}
               </span>
-              <span className="text-zinc-300">{contact.label}</span>
+              <span className="text-zinc-300 truncate">{contact.label}</span>
             </div>
           ))}
         </div>
@@ -118,9 +125,8 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center gap-3 px-7 py-3.5 hover:bg-zinc-900/60 transition-colors group ${
-                index < socials.length - 1 ? "border-r border-zinc-800" : ""
-              }`}
+              className={`flex items-center gap-3 px-7 py-3.5 hover:bg-zinc-900/60 transition-colors group ${index < socials.length - 1 ? "border-r border-zinc-800" : ""
+                }`}
             >
               <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 ${social.bg}`}>
                 {social.icon}

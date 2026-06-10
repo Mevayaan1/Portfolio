@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { MorphingText } from "@/components/MorphingText";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -42,6 +43,16 @@ export default function Hero() {
           >
             Full-Stack Engineer
           </motion.p>
+
+          <MorphingText
+            words={[
+              "Full-Stack Engineer",
+              "React Developer",
+              "Node.js Backend Dev",
+              "Freelance Builder",
+              "Open to Work",
+            ]}
+          />
 
           {/* Headline */}
           <motion.h1
