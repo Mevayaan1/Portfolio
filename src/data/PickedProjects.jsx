@@ -43,7 +43,7 @@ export const PickedProjects = [
     id: 3,
     icon: <HeerIcon />,
     image: "https://images.pexels.com/photos/5632397/pexels-photo-5632397.jpeg",
-    title: "Heer E-commerce Platform",
+    title: "Heer E-commerce website",
     subtitle: "React • Supabase • Razorpay",
     description:
       "Built a production-ready full-stack e-commerce platform with authentication, product catalog management, cart functionality, order workflows, and Razorpay payment integration.",
@@ -57,7 +57,7 @@ export const PickedProjects = [
     id: 4,
     icon: <EngravedIcon />,
     image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
-    title: "Engraved by AM Arts",
+    title: "Engraved e commerce",
     subtitle: "React • Node.js • MongoDB",
     description:
       "Developed a MERN-based e-commerce platform for an inlay furniture business featuring product filtering, shopping cart functionality, REST APIs, and an admin dashboard for inventory management.",
