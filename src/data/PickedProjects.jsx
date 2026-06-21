@@ -13,7 +13,7 @@ export const PickedProjects = [
     id: 1,
     icon: <HardHat className="w-5 h-5 text-foreground" />,
     image: "https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg",
-    title: "Viraat Builders Management System",
+    title: "Builders CRM",
     subtitle: "Next.js • TypeScript • Express • MongoDB",
     description:
       "Developing a construction management platform covering Sites, Users, Tasks, Orders, Attendance, and Notifications. Built the complete backend architecture including authentication, REST APIs, role-based access control, and notification workflows.",
@@ -38,6 +38,7 @@ export const PickedProjects = [
     githubUrl: "",
     demoUrl: "",
   },
+
   {
     id: 3,
     icon: <HeerIcon />,

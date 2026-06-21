@@ -27,10 +27,10 @@ export default function Hero() {
         >
           {/* Availability badge */}
           <motion.div variants={itemVariants} className="w-fit">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 dark:bg-emerald-400" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600 dark:bg-emerald-500" />
               </span>
               Available for new opportunities
             </span>
@@ -39,7 +39,7 @@ export default function Hero() {
           {/* Role label */}
           <motion.p
             variants={itemVariants}
-            className="uppercase tracking-widest text-sm font-medium text-zinc-500"
+            className="uppercase tracking-widest text-sm font-medium text-zinc-400 dark:text-zinc-500"
           >
             Full-Stack Engineer
           </motion.p>
@@ -65,7 +65,7 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
+            className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400"
           >
             I engineer scalable web systems using React, Node, and MongoDB — built
             with performance-first architecture and production-ready deployment in mind.
@@ -74,7 +74,7 @@ export default function Hero() {
           {/* Stack */}
           <motion.p
             variants={itemVariants}
-            className="text-sm text-zinc-600 dark:text-zinc-400"
+            className="text-sm text-zinc-500 dark:text-zinc-400"
           >
             React • Node • MongoDB • Tailwind • REST APIs
           </motion.p>
@@ -92,7 +92,7 @@ export default function Hero() {
           {/* Stats */}
           {/* <motion.div
             variants={itemVariants}
-            className="flex items-center gap-8 pt-6 mt-2 border-t border-white/10"
+            className="flex items-center gap-8 pt-6 mt-2 border-t border-zinc-200 dark:border-white/10"
           >
             {[
               { value: "4+", label: "Projects Shipped" },
@@ -101,7 +101,7 @@ export default function Hero() {
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col gap-0.5">
                 <span className="font-primary font-bold text-xl text-foreground">{stat.value}</span>
-                <span className="font-primary text-xs text-neutral-500/70 uppercase tracking-wider">{stat.label}</span>
+                <span className="font-primary text-xs text-zinc-400 dark:text-neutral-500/70 uppercase tracking-wider">{stat.label}</span>
               </div>
             ))}
           </motion.div> */}
