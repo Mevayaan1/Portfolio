@@ -1,7 +1,7 @@
 import ProjectCards from "@/components/ProjectCards";
 import { useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { PickedProjects } from "@/data/Pickedprojects";
+import { PickedProjects } from "@/data/PickedProjects";
 const ALL_TAGS = ["All", ...Array.from(new Set(PickedProjects.flatMap((p) => p.tags)))];
 
 export default function FeatureProjects({ arrange = "grid" }) {
@@ -47,11 +47,10 @@ export default function FeatureProjects({ arrange = "grid" }) {
               <button
                 key={tag}
                 onClick={() => { setActiveTag(tag); setShowAll(false); }}
-                className={`font-primary text-xs border rounded-lg px-4 py-2 transition-all duration-200 ${
-                  activeTag === tag
-                    ? "border-white/25 text-zinc-100 bg-white/5"
-                    : "border-white/10 text-zinc-500 hover:border-white/25 hover:text-zinc-300"
-                }`}
+                className={`font-primary text-xs border rounded-lg px-4 py-2 transition-all duration-200 ${activeTag === tag
+                  ? "border-white/25 text-zinc-100 bg-white/5"
+                  : "border-white/10 text-zinc-500 hover:border-white/25 hover:text-zinc-300"
+                  }`}
               >
                 {tag}
               </button>
