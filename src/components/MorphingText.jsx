@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const ROLES = [
   "Full-Stack Engineer",
@@ -68,7 +67,8 @@ export default function MorphingText({
 
   return (
     <div
-      className={`font-mono text-sm text-zinc-500 tracking-wide ${className}`}
+      // Light: zinc-400, Dark: zinc-500 — className prop can still override
+      className={`font-mono text-sm text-zinc-400 dark:text-zinc-500 tracking-wide ${className}`}
       aria-label={words[index]}
     >
       {display}
