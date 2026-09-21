@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="w-full bg-transparent py-12 scroll-mt-24">
+    <section id="about" className="w-full bg-transparent scroll-mt-24">
       <div className="w-full">
         {/* Top Border Line */}
         <div className="border-t border-zinc-200 dark:border-zinc-800 mb-12" />

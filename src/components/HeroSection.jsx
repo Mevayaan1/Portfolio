@@ -1,24 +1,60 @@
 import { useState, useEffect } from "react";
-import { MapPin, Mail, Clock, Mars, CodeXml, GithubIcon, LinkedinIcon } from "lucide-react";
+import { MapPin, Mail, Mars, CodeXml, GithubIcon, LinkedinIcon } from "lucide-react";
 import MorphingText from "@/components/MorphingText";
 
+const istFormatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Asia/Kolkata",
+  hour: "numeric",
+  minute: "numeric",
+  hourCycle: "h23",
+});
+
+const getISTMinutes = () => {
+  const parts = istFormatter.formatToParts(new Date());
+  const get = (type) => Number(parts.find((p) => p.type === type).value);
+  return (get("hour") % 24) * 60 + get("minute");
+};
+
+function LiveClockIcon({ minutesOfDay, className }) {
+  const h = Math.floor(minutesOfDay / 60);
+  const m = minutesOfDay % 60;
+  const hand = (deg) => ({
+    transformOrigin: "12px 12px",
+    transform: `rotate(${deg}deg)`,
+  });
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="12" x2="12" y2="7" style={hand((h % 12) * 30 + m * 0.5)} />
+      <line x1="12" y1="12" x2="12" y2="4.5" style={hand(m * 6)} />
+    </svg>
+  );
+}
+
 export default function HeroSection({ avatarSrc, bannerSrc }) {
-  const [currentTime, setCurrentTime] = useState("");
+  const [minutesOfDay, setMinutesOfDay] = useState(getISTMinutes);
 
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const istTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-      setCurrentTime(istTime.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }) + " IST");
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
-    return () => clearInterval(interval);
+    const id = setInterval(() => setMinutesOfDay(getISTMinutes()), 1000);
+    return () => clearInterval(id);
   }, []);
+
+  const hours = Math.floor(minutesOfDay / 60);
+  const currentTime = `${String(hours % 12 || 12).padStart(2, "0")}:${String(minutesOfDay % 60).padStart(2, "0")} ${hours < 12 ? "am" : "pm"} IST`;
 
   const contacts = [
     { icon: <CodeXml className="w-4 h-4 text-zinc-500 dark:text-foreground" />, label: "Freelance Full-Stack Dev" },
-    { icon: <Clock className="w-4 h-4 text-zinc-500 dark:text-foreground" />, label: currentTime },
+    { icon: <LiveClockIcon minutesOfDay={minutesOfDay} className="w-4 h-4 text-zinc-500 dark:text-foreground" />, label: currentTime },
     { icon: <MapPin className="w-4 h-4 text-zinc-500 dark:text-foreground" />, label: "Jodhpur, Rajasthan, IN" },
     { icon: <Mail className="w-4 h-4 text-zinc-500 dark:text-foreground" />, label: "ayaanmev@gmail.com" },
     { icon: <Mars className="w-4 h-4 text-zinc-500 dark:text-foreground" />, label: "he/him" },

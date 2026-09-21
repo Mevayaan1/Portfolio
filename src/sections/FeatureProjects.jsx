@@ -2,7 +2,12 @@ import ProjectCards from "@/components/ProjectCards";
 import { useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { PickedProjects } from "@/data/PickedProjects";
-const ALL_TAGS = ["All", ...Array.from(new Set(PickedProjects.flatMap((p) => p.tags)))];
+const TOP_TAGS = (() => {
+  const counts = new Map();
+  PickedProjects.flatMap((p) => p.tags).forEach((t) => counts.set(t, (counts.get(t) ?? 0) + 1));
+  return [...counts.keys()].sort((a, b) => counts.get(b) - counts.get(a)).slice(0, 5);
+})();
+const ALL_TAGS = ["All", ...TOP_TAGS];
 
 export default function FeatureProjects({ arrange = "grid" }) {
   const [activeTag, setActiveTag] = useState("All");
@@ -42,14 +47,15 @@ export default function FeatureProjects({ arrange = "grid" }) {
           </div>
 
           {/* Right: tag filter */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 md:justify-end">
             {ALL_TAGS.map((tag) => (
               <button
                 key={tag}
                 onClick={() => { setActiveTag(tag); setShowAll(false); }}
-                className={`font-primary text-xs border rounded-lg px-4 py-2 transition-all duration-200 ${activeTag === tag
-                  ? "border-white/25 text-zinc-100 bg-white/5"
-                  : "border-white/10 text-zinc-500 hover:border-white/25 hover:text-zinc-300"
+                aria-pressed={activeTag === tag}
+                className={`font-mono text-[13px] leading-5 border rounded-full px-2.5 py-1 transition-colors duration-200 ${activeTag === tag
+                  ? "border-zinc-400 dark:border-zinc-500 bg-zinc-200/70 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
+                  : "border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-zinc-100"
                   }`}
               >
                 {tag}
@@ -91,13 +97,6 @@ export default function FeatureProjects({ arrange = "grid" }) {
             <span aria-hidden="true">{showAll ? " −" : " +"}</span>
           </button>
         )}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 flex justify-center"
-        />
       </div>
     </section>
   );

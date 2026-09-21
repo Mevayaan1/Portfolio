@@ -17,7 +17,7 @@ export const PickedProjects = [
     subtitle: "Next.js • TypeScript • Express • MongoDB",
     description:
       "Developing a construction management platform covering Sites, Users, Tasks, Orders, Attendance, and Notifications. Built the complete backend architecture including authentication, REST APIs, role-based access control, and notification workflows.",
-    tags: ["Fullstack", "Backend", "Admin Panel"],
+    tags: ["Fullstack", "Backend", "Dashboard"],
     status: "In Progress",
     date: "Mar 2026",
     githubUrl: "",
