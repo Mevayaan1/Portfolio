@@ -5,6 +5,7 @@ const FeatureProjects = lazy(() => import("../sections/FeatureProjects"));
 import HeroSection from "../components/HeroSection";
 import HeroAbout from "../sections/HeroAbout";
 import AboutSection from "../sections/AboutSection";
+import Experience from "../sections/Experience";
 import Contact from "../sections/Contact";
 import Footer from "../components/Footer";
 import Skills from "../sections/Skills";
@@ -17,6 +18,7 @@ export default function Home() {
       <HeroSection avatarSrc={avatarSrc} bannerSrc={bannerSrc} />
       <div className="space-y-16 max-w-7xl mx-auto">
         <AboutSection />
+        <Experience />
         <Skills />
         <Suspense fallback={null}>
           <FeatureProjects arrange="grid" />
