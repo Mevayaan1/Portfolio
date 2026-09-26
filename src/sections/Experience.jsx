@@ -10,7 +10,7 @@ const experiences = [
     company: "Unplanned Labs",
     companyUrl: "https://www.unplannedlabs.com",
     logo: "/images/unplannedlabs.png",
-    location: "Remote",
+    location: "Assam, India · Remote",
     position: "Backend Developer",
     type: "Full-time",
     start: { year: 2026, month: 8 },
@@ -31,13 +31,13 @@ const experiences = [
     stack: ["NestJS", "TypeScript", "Node.js", "Prisma", "PostgreSQL", "Docker"],
   },
   {
-    company: "Freelance",
+    company: "MrigTech",
     location: "Jodhpur, India",
     position: "Full-Stack Developer",
-    type: "Part-time",
+    type: "Contract · Part-time",
     start: { year: 2025, month: 9 },
     description:
-      "Delivering custom web solutions for clients across e-commerce, billing and construction, alongside my full-time role.",
+      "Building custom web products for clients across e-commerce, billing, construction and industrial monitoring, alongside my full-time role.",
     stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Supabase"],
   },
 ];
@@ -62,7 +62,7 @@ export default function Experience() {
           <p className="uppercase tracking-widest text-sm font-medium text-zinc-500 font-mono">
             Experience
           </p>
-          <h2 className="text-3xl font-semibold text-zinc-900 dark:text-zinc-50 -mt-4">
+          <h2 className="font-primary text-3xl font-semibold text-zinc-900 dark:text-zinc-50 -mt-4">
             Where I&apos;ve worked
           </h2>
 

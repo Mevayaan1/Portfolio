@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { MoonStar, Sun } from "lucide-react";
+import { MoonStar, Sun, Download } from "lucide-react";
 import NavLogo from "./ui/Navlogo";
 
 export default function Navbar() {
@@ -82,6 +82,20 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
+            <a
+              href="/Ayaan_Mev_Resume.pdf"
+              download="Ayaan_Mev_Resume.pdf"
+              className="
+                hidden md:inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors
+                text-zinc-700 dark:text-zinc-200
+                bg-zinc-100 hover:bg-zinc-200
+                dark:bg-white/10 dark:hover:bg-white/20
+              "
+            >
+              <Download className="w-3.5 h-3.5" />
+              Resume
+            </a>
+
             <button
               onClick={handleThemeToggle}
               className="
@@ -120,6 +134,15 @@ export default function Navbar() {
                   {id === "hero" ? "Home" : id.charAt(0).toUpperCase() + id.slice(1)}
                 </a>
               ))}
+              <a
+                href="/Ayaan_Mev_Resume.pdf"
+                download="Ayaan_Mev_Resume.pdf"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-1.5 hover:text-zinc-900 dark:hover:text-white transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                Resume
+              </a>
             </div>
           )}
         </motion.nav>

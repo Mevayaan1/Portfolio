@@ -41,7 +41,7 @@ export default function Skills() {
 
           <motion.h2
             variants={rowVariants}
-            className="text-3xl font-semibold text-zinc-900 dark:text-zinc-50 -mt-4"
+            className="font-primary text-3xl font-semibold text-zinc-900 dark:text-zinc-50 -mt-4"
           >
             What I build with
           </motion.h2>

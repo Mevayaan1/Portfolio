@@ -69,7 +69,7 @@ export default function Contact() {
             </motion.p>
             <motion.h2
               variants={itemVariants}
-              className="text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight"
+              className="font-primary text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight"
             >
               Let's build something together.
             </motion.h2>

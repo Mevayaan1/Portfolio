@@ -41,7 +41,7 @@ export default function FeatureProjects({ arrange = "grid" }) {
             <p className="uppercase tracking-widest text-sm font-medium text-zinc-500">
               Selected Work
             </p>
-            <h2 className="text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight">
+            <h2 className="font-primary text-3xl font-medium tracking-tight text-zinc-900 dark:text-zinc-50 leading-tight">
               Featured Projects.
             </h2>
           </div>

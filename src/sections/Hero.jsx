@@ -85,7 +85,7 @@ export default function Hero() {
               <a href="#projects">View Projects</a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+              <a href="/Ayaan_Mev_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
           </motion.div>
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MapPin, Mail, Mars, CodeXml, GithubIcon, LinkedinIcon } from "lucide-react";
+import { MapPin, Mail, Mars, CodeXml, GithubIcon, LinkedinIcon, Download } from "lucide-react";
 import MorphingText from "@/components/MorphingText";
 
 const istFormatter = new Intl.DateTimeFormat("en-GB", {
@@ -64,6 +64,7 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
     { href: "https://twitter.com/@mevayaan01", icon: "X", label: "X", bg: "bg-black text-white" },
     { href: "https://github.com/mevayaan1", icon: <GithubIcon className="w-4 h-4 text-white" />, label: "GitHub", bg: "bg-[#161b22]" },
     { href: "https://linkedin.com/in/mevayaan01", icon: <LinkedinIcon className="w-4 h-4 text-white" />, label: "LinkedIn", bg: "bg-[#0a66c2]" },
+    { href: "/Ayaan_Mev_Resume.pdf", download: "Ayaan_Mev_Resume.pdf", icon: <Download className="w-4 h-4 text-white" />, label: "Resume", bg: "bg-emerald-600" },
   ];
 
   const AVATAR_SIZE = "w-20 h-20 md:w-24 md:h-24 lg:w-38 lg:h-38";
@@ -153,8 +154,9 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
             <a
               key={index}
               href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(social.download
+                ? { download: social.download }
+                : { target: "_blank", rel: "noopener noreferrer" })}
               className={`flex items-center gap-3 px-7 py-3.5 transition-colors group
                 hover:bg-zinc-100 dark:hover:bg-zinc-900/60
                 ${index < socials.length - 1
@@ -166,7 +168,9 @@ export default function HeroSection({ avatarSrc, bannerSrc }) {
                 {social.icon}
               </span>
               <span className="text-sm text-zinc-700 dark:text-zinc-300 font-mono">{social.label}</span>
-              <span className="ml-auto text-xs text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors">↗</span>
+              <span className="ml-auto text-xs text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors">
+                {social.download ? "↓" : "↗"}
+              </span>
             </a>
           ))}
         </div>
