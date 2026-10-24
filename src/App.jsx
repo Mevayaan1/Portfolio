@@ -1,4 +1,6 @@
 import { Suspense, lazy } from "react";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 const ParticlesBackground = lazy(() => import("./components/ParticlesBackground"));
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -14,6 +16,8 @@ export default function App() {
           <Home />
         </main>
       </div>
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 }
